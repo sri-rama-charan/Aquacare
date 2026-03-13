@@ -1,6 +1,13 @@
-const API_URL = import.meta.env.DEV
-  ? "http://localhost:8000"
-  : import.meta.env.VITE_API_URL || "http://localhost:8000";
+const getApiUrl = () => {
+  if (import.meta.env.DEV) return "http://localhost:8000";
+  let url = import.meta.env.VITE_API_URL;
+  if (url && !url.startsWith("http")) {
+    url = `https://${url}`;
+  }
+  return url || "http://localhost:8000";
+};
+
+const API_URL = getApiUrl();
 
 export interface PredictionResult {
   type: string;

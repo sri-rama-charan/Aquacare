@@ -1,0 +1,13 @@
+runtime: python310
+
+instance_class: F4
+
+env_variables:
+  # Add your HuggingFace Token here in the Google Cloud Console later if needed
+  # HF_TOKEN: "your_token"
+
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+
+handlers:
+- url: /.*
+  script: auto

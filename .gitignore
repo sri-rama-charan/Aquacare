@@ -1,0 +1,48 @@
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+venv/
+env/
+ENV/
+.venv/
+lib/
+lib64/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Large Datasets/Training artifacts (observed in project)
+backend/Maindataset/
+backend/training/
+*.h5
+*.keras
+*.tflite
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+backend/static/
+backend/media/
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# GCP and Docker specific
+.gcloudignore
+.dockerignore
+auth.json
+*.log

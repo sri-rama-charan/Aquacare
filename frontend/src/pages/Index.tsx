@@ -5,9 +5,16 @@ import DetectionButton from "@/components/DetectionButton";
 import ResultsSection, { DetectionResult } from "@/components/ResultsSection";
 import ErrorMessage from "@/components/ErrorMessage";
 
-const API_URL = import.meta.env.DEV
-  ? "/api"
-  : import.meta.env.VITE_API_URL || "/api";
+const getApiUrl = () => {
+  if (import.meta.env.DEV) return "/api";
+  let url = import.meta.env.VITE_API_URL;
+  if (url && !url.startsWith("http")) {
+    url = `https://${url}`;
+  }
+  return url || "/api";
+};
+
+const API_URL = getApiUrl();
 
 const Index = () => {
   const [image, setImage] = useState<string | null>(null);
