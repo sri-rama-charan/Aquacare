@@ -11,7 +11,8 @@ const getApiUrl = () => {
   if (url && !url.startsWith("http")) {
     url = `https://${url}`;
   }
-  return url || "/api";
+  // Remove trailing slash from base URL to avoid double slashes
+  return url?.replace(/\/$/, "") || "";
 };
 
 const API_URL = getApiUrl();
@@ -53,7 +54,7 @@ const Index = () => {
       const formData = new FormData();
       formData.append("file", imageFile);
 
-      const response = await fetch(`${API_URL}/predict`, {
+      const response = await fetch(`${API_URL}/predict/`, {
         method: "POST",
         body: formData,
       });
